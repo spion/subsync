@@ -22,8 +22,8 @@ The command line is
     subsync <spec> [spec, ...] < input.srt > output.srt
 
 Where **spec** is `position+shift` or `position-shift`
-* position can be `hh:mm:ss` or `@`
-* shift is a number in seconds.
+ * position can be `hh:mm:ss` or `@`
+ * shift is a number in seconds.
 
 Subsync will shift the subtitles at the specified position by the specified amount in seconds.
 
