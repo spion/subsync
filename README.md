@@ -14,10 +14,12 @@ Between the given positions, subsync will use linear interpolation. For example,
 Requires node.js with npm
 
 Install:
+    
     [sudo] npm install -g subsync 
 
 The command line is
-    sunsync <spec> [spec, ...] < input.srt > output.srt
+    
+    subsync <spec> [spec, ...] < input.srt > output.srt
 
 Where **spec** is `position+shift` or `position-shift`
 * position can be `hh:mm:ss` or `@`
@@ -28,12 +30,15 @@ Subsync will shift the subtitles at the specified position by the specified amou
 # Examples
 
 Constantly shift the whole subtitle file by 5 seconds
+    
     subsync @+5 < input.srt > output.srt
 
 Start shifting by 1s at the beginning, and end with +20 seconds at the end:
+    
     subsync @+1 @+20 < input.srt > output.srt
 
 Start shifting by 0s at the beginning, gradually decrease to -4s at 1 hour and hold it there to the end
+    
     subsync @+0 1:00:00-4 < input.srt > output.srt
 
 
