@@ -1,0 +1,18 @@
+{
+  "name": "subsync",
+  "version": "0.0.1",
+  "description": "Sync your (srt) subtitles using the command line",
+  "main": "subsync.js",
+  "bin" : { "subsync" : "./subsync.js" },
+  "keywords": ["sub", "subs", "subtitle", "subtitles", "sync", "delay", "fix"],
+  "dependencies": {
+    "optimist": "~0.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "spion <gorgi.kosev@gmail.com>",
+  "license": "BSD"
+}
