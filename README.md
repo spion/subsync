@@ -11,6 +11,11 @@ Between the given positions, subsync will use linear interpolation. For example,
 
 # Usage
 
+Requires node.js with npm
+
+Install:
+    [sudo] npm install -g subsync 
+
 The command line is
     sunsync <spec> [spec, ...] < input.srt > output.srt
 
