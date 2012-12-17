@@ -19,7 +19,7 @@ Install:
 The command line is
     sunsync <spec> [spec, ...] < input.srt > output.srt
 
-Where **spec** is `position+shift` or <position>-<shift>
+Where **spec** is `position+shift` or `position-shift`
 * position can be `hh:mm:ss` or `@`
 * shift is a number in seconds.
 
