@@ -3,7 +3,7 @@
 var argv = require('optimist').
     demand(1).
     usage([
-           "usage: $0 <spec> [spec, ...] < input.srt > output.srt", 
+           "usage: $0 <spec> [spec, ...] < input.srt > output.srt",
            "  where <spec> is <position>+<shift> or <position>-<shift>",
            "    position can be hh:mm:ss or @",
            "    shift is a number in seconds.",
@@ -36,7 +36,7 @@ function parseSpec(spec) {
 
 function padz(n) { return n >= 10 ? n : '0'+n; }
 
-function createShifter(specs) { 
+function createShifter(specs) {
     return function(pos) {
        for (var k = 1; specs[k].at < pos; ++k);
        var start = specs[k-1], end = specs[k];
@@ -61,18 +61,19 @@ process.stdin.on('end', function() {
 
     var expect = 'new', last;
     lines.forEach(function(l) {
-        if (expect == 'new') { last = {id: parseInt(l), text:''}; expect = 'time'; }
-        else if (expect == 'time') { 
+        if (expect == 'new') {
+            last = {id: parseInt(l, 10), text:''};
+            if (!isNaN(last.id)) expect = 'time';
+        } else if (expect == 'time') {
             var twoTimes = l.split(/\s+-+>\s+/);
             last.start = parseTime(twoTimes[0]);
             last.end = parseTime(twoTimes[1]);
             expect = 'text_end';
         }
         else {
-            if (l.match(/^\s*$/)) { 
-                last.text += '\r\n'; 
-                subs.push(last); 
-                expect = 'new'; 
+            if (l.match(/^\s*$/)) {
+                subs.push(last);
+                expect = 'new';
             }
             else last.text += l + '\r\n';
         }
@@ -101,5 +102,5 @@ process.stdin.on('end', function() {
     }).forEach(function(str) {
         process.stdout.write(str);
     });
-    
+
 });
