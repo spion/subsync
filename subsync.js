@@ -3,7 +3,9 @@
 var argv = require('optimist').
     demand(1).
     usage([
-           "usage: $0 <spec> [spec, ...] < input.srt > output.srt",
+           "usage: $0 <flags> <spec> [spec, ...] < input.srt > output.srt",
+           "  where <flags> could be:",
+           "    -e : Encoding [i.e: latin1]. Default is utf8.",
            "  where <spec> is <position>+<shift> or <position>-<shift>",
            "    position can be hh:mm:ss or @",
            "    shift is a number in seconds.",
@@ -47,8 +49,11 @@ function createShifter(specs) {
 }
 
 
+// Setting encoding. See https://github.com/spion/subsync/issues/2
+var encoding = argv.e ? argv.e : 'utf8';
+
 var sub = [];
-process.stdin.setEncoding('utf8');
+process.stdin.setEncoding(encoding);
 process.stdin.resume();
 process.stdin.on('data', function(d) {
     sub.push(d);
