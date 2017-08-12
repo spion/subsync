@@ -1,6 +1,6 @@
 {
   "name": "subsync",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Sync your (srt) subtitles using the command line",
   "main": "subsync.js",
   "bin": {
