@@ -44,7 +44,7 @@ function createShifter(specs) {
        var start = specs[k-1], end = specs[k];
        var percent = (pos - start.at) / (end.at - start.at)
        var shift = start.shift + percent * (end.shift - start.shift);
-       return pos + shift;
+       return (pos + shift) > 0 ? pos + shift : 0;
     }
 }
 
